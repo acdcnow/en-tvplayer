@@ -10,6 +10,11 @@ const TIZEN = __dirname;
 
 const PKG = 'IPTVPlayer'; // Must be EXACTLY 10 chars!
 
+// Tizen API level written into config.xml. This fork targets TV sets that are
+// still on Tizen 4.0 (2018 models). Override for newer-only packages with
+// TIZEN_REQUIRED_VERSION=5.0 npm run tizen
+const REQUIRED_TIZEN_VERSION = process.env.TIZEN_REQUIRED_VERSION || '4.0';
+
 // Read app version from player package.json
 const playerPkg = JSON.parse(readFileSync(join(ROOT, 'player', 'package.json'), 'utf-8'));
 const APP_VERSION = playerPkg.version;
@@ -120,7 +125,7 @@ const configXml = `<?xml version="1.0" encoding="UTF-8"?>
         version="${APP_VERSION}"
         viewmodes="maximized">
   <access origin="*" subdomains="true"/>
-  <tizen:application id="${PKG}.IPTV" package="${PKG}" required_version="5.0"/>
+  <tizen:application id="${PKG}.IPTV" package="${PKG}" required_version="${REQUIRED_TIZEN_VERSION}"/>
   <author href="http://iptvplayer">EN-IPTV Player</author>
   <content src="index.html"/>
   <feature name="http://tizen.org/feature/screen.size.all"/>

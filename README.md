@@ -5,11 +5,18 @@
 [![Downloads](https://img.shields.io/github/downloads/Nur-allhi/en-tvplayer/total)](https://github.com/Nur-allhi/en-tvplayer/releases)
 [![Latest release](https://img.shields.io/github/v/release/Nur-allhi/en-tvplayer)](https://github.com/Nur-allhi/en-tvplayer/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Tizen](https://img.shields.io/badge/Tizen-5.0+-red?logo=samsung)]()
+[![Tizen](https://img.shields.io/badge/Tizen-4.0+-red?logo=samsung)]()
 
 > **Current version: v3.2.0** — [see what's new](CHANGELOG.md) · [download](https://github.com/Nur-allhi/en-tvplayer/releases/latest)
 >
 > **Looking for** a Samsung Tizen IPTV player — an M3U/M3U8 playlist player for Samsung Smart TV, sideloaded as a `.wgt` file, that plays DRM-protected (ClearKey / PlayReady) channels? That's this app.
+
+> **Fork note (acdcnow) — Tizen 4.0 downport.** The widget now declares
+> `required_version="4.0"` instead of `5.0`, so 2018-era TVs (Tizen 4.0, e.g. the
+> UE40NU7190) accept the package instead of failing with `install failed[118019]`.
+> Override for newer-only builds with `TIZEN_REQUIRED_VERSION=5.0 npm run tizen`.
+> Signing on Tizen 4.0 is still a separate hurdle — see
+> [tizen/README.md](tizen/README.md#certificate--signing-note).
 
 ---
 

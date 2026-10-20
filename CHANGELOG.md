@@ -2,6 +2,29 @@
 
 All notable changes to EN TV Player will be documented in this file.
 
+## [3.2.1] - 2026-10-20
+
+Tizen 4.0 downport (fork `acdcnow/en-tvplayer`). Verified against a Samsung UE40NU7190
+running Tizen 4.0 (`platform_version:4.0`).
+
+### Changed
+- **`required_version` lowered from `5.0` to `4.0`** in the packaged `config.xml`, so
+  2018-era TVs accept the package. Override with `TIZEN_REQUIRED_VERSION=5.0 npm run tizen`
+  when building for newer sets only.
+- `tizen/config.xml` reference manifest and the README badges now state `4.0+`.
+
+### Fixed
+- **`install failed[118019]`** on Tizen 4.0 TVs: the package declared API level 5.0, so the
+  TV aborted before unpacking anything. Confirmed by A/B test — the same `.wgt` with only
+  `required_version` changed now proceeds to `installing[23]`.
+
+### Documented
+- `install failed[118012]` at `installing[23]` is a **signature/certificate** rejection that
+  the version bump does not fix; the self-signed `signature.xml` produced by `package.mjs`
+  is refused on Tizen 4.0. `tizen/README.md` now records both error codes, the hardware
+  evidence and the Tizen-native signing chain (Tizen Developers CA author +
+  `author-signature.xml`/`signature1.xml`) known to work on other 4.0 sets.
+
 ## [3.2.0] - 2026-10-14
 
 ### Fixed
